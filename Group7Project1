@@ -11,7 +11,7 @@ if ${DEBUG}; then
 	echo c. Update a record
 	echo d. Remove a record
 	echo e. Quit
-	echo >Selection is; 
+	echo :Selection is: 
 fi
 choice="f"
 
