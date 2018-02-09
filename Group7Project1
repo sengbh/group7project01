@@ -1,5 +1,5 @@
 #!/bin/bash
-DEBUG=fase
+DEBUG=false
 if ${DEBUG}; then
 	echo Design function and interface
 	echo Add functions with an interactive interface to access these functions.
