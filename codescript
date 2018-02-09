@@ -18,6 +18,8 @@ if ${DEBUG}; then
 	echo Task III: Implementation
 	echo Implement shell scripts to interact with the database management
 fi
+echo 
+echo "Wecome to my contact database, please select in the following menu:"
 
 choice="f"
 
