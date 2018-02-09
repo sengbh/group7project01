@@ -1,6 +1,8 @@
 #!/bin/bash
 DEBUG=false
 if ${DEBUG}; then
+	echo Task I and Task II
+	echo Design a database with plain .txt doc
 	echo Design function and interface
 	echo Add functions with an interactive interface to access these functions.
 	echo The interface is selected, read input, and get the result of an operations.
@@ -11,8 +13,12 @@ if ${DEBUG}; then
 	echo c. Update a record
 	echo d. Remove a record
 	echo e. Quit
-	echo :Selection is: 
+	echo Selection is: 
+
+	echo Task III: Implementation
+	echo Implement shell scripts to interact with the database management
 fi
+
 choice="f"
 
 menu="(a) Find a record
