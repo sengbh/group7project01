@@ -38,6 +38,7 @@ while [ "$choice" != "e" ]; do
 
 	case $choice in 
 		a) echo "Find a record";;
+		  #echo "-------------"
 		#A) echo "Find a record";;
 		b) echo "Add a record"
 		   echo "------------"
@@ -48,8 +49,10 @@ while [ "$choice" != "e" ]; do
 			echo "$name: $address: $phone: $email" >> database.txt;;
 		#B) echo "Add a record";;
 		c) echo "Update a record";;
+		   #echo "--------------"
 		#C) echo "Update a record";;
 		d) echo "Remove a record";;
+		   #echo "---------------"
 		#D) echo "Remove a record";;
 		e) exit;;
 		#E) exit
