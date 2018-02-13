@@ -54,8 +54,12 @@ while [ "$choice" != "e" ]; do
 		d) echo "Remove a record";;
 		   #echo "---------------"
 		#D) echo "Remove a record";;
-		e) exit;;
-		#E) exit
+		e) echo "The program is terminated..."
+			exit 1;;
+		*)
+		echo "Invalid input, please enter (a-e)... "
+		echo ;;
+		
 	esac
 done
 
