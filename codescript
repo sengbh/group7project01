@@ -20,6 +20,7 @@ if ${DEBUG}; then
 fi
 echo 
 echo "Wecome to my contact database, please select in the following menu:"
+echo "------------------------------------------------------------------"
 
 choice="f"
 
@@ -27,26 +28,34 @@ menu="(a) Find a record
 (b) Add a new record
 (c) Update a recod
 (d) Remove a recod
-(e) Quit
-> Your selection : "
+(e) Quit"
 
 while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
+	echo
+	read -p "> Your selection : " choice
 
-	read choice
 	case $choice in 
 		a) echo "Find a record";;
-		A) echo "Find a record";;
-		b) echo "Add a record";;
-		B) echo "Add a record";;
+		#A) echo "Find a record";;
+		b) echo "Add a record"
+		   echo "------------"
+			read -p "Enter a name: " name
+			read -p "Enter an address: " address
+			read -p "Enter a Phone number: " phone
+			read -p "Enter an Email: " email
+			echo "$name: $address: $phone: $email" >> database.txt;;
+		#B) echo "Add a record";;
 		c) echo "Update a record";;
-		C) echo "Update a record";;
+		#C) echo "Update a record";;
 		d) echo "Remove a record";;
-		D) echo "Remove a record";;
+		#D) echo "Remove a record";;
 		e) exit;;
-		E) exit
+		#E) exit
 	esac
 done
 
 exit 0
+
+
