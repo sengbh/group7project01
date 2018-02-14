@@ -65,6 +65,24 @@ searchRecord() {
 
 }
 
+#function to remove a contact from a database
+removeRecord() {
+	echo "---------------"
+	echo "Remove a record"
+	echo "---------------"
+
+	read -p "Enter a name to be removed: " name
+	echo
+	if grep -i $name $data
+	then
+		grep -v $name $data > deleteDate.txt
+		echo "$name was removed from the file"
+	else
+		echo "$name does not exist."
+		echo
+	fi
+}
+
 
 while [ "$choice" != "e" ]; do
 
@@ -79,23 +97,13 @@ while [ "$choice" != "e" ]; do
 
 		b)addRecord;;
 		B)addRecord;;
-		c) echo "Update a record";;
-		   #echo "--------------"
-		#C) echo "Update a record";;
-		d) echo "Remove a record"
-		   echo "---------------"
-		   	read -p "Enter a name to delete:" name
-			echo
 
-		   	if grep -i $name $data
-			then
-				grep -i $name $data > deleteData.txt
-				echo "$name was removed from the file"
-			else
-				echo "$name does not exist"
+		c)updateRecord;;
+		C)updateRecord;;
 
-		fi;;
-		#D) echo "Remove a record";;
+		d)removeRecord;;
+		D)removeRecord;;
+
 		e) echo "The program is terminated..."
 			exit 1;;
 		*)
