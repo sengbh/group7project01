@@ -79,11 +79,6 @@ while [ "$choice" != "e" ]; do
 
 		b)addRecord;;
 		B)addRecord;;
-		a) echo "Find a record";;
-		  #echo "-------------"
-		#A) echo "Find a record";;
-		b)addRecord;;
-		B)addRecord;;
 		c) echo "Update a record";;
 		   #echo "--------------"
 		#C) echo "Update a record";;
@@ -94,8 +89,7 @@ while [ "$choice" != "e" ]; do
 
 		   	if grep -i $name $data
 			then
-				grep -i $name $data > newData.txt
-			        #userdel -r $name
+				grep -i $name $data > deleteData.txt
 				echo "$name was removed from the file"
 			else
 				echo "$name does not exist"
