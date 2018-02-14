@@ -1,5 +1,8 @@
 #!/bin/bash
-DATA="database.txt"
+#assign a file to $data. Please use $data instead of database.txt. thanks.
+data="database.txt"
+
+#Task instructions wrapped in comments
 DEBUG=false
 if ${DEBUG}; then
 	echo Task I and Task II
@@ -31,9 +34,8 @@ menu="(a) Find a record
 (d) Remove a record
 (e) Quit"
 
-
+#function to add contact a database file
 addRecord() {
-<<<<<<< HEAD
 	 echo "------------"
 	 echo "Add a record"
 	 echo "------------"
@@ -41,8 +43,10 @@ addRecord() {
 	 read -p "Enter an address: " address
 	 read -p "Enter a phone number: " phone
 	 read -p "Enter an email: " email
-	 echo "$name:$address:$phone:$email" >>$DATA
+	 echo "$name:$address:$phone:$email" >>$data
 }
+
+#function to search a contact in a database file
 searchRecord() {
 	echo "-------------"
 	echo "Find a record"
@@ -50,28 +54,17 @@ searchRecord() {
 	read -p "Enter a name to search: " name
 	echo
 	
-	if grep -i $name $DATA
+	if grep -i $name $data
 	then
-		echo "The contact is found in: " $DATA
+		echo "The contact is found in: " $data
 		echo
 	else
-		echo "The contact is not found"
+		echo "The contact is not found in: " $data
 		echo
 	fi
 
 }
-=======
-  echo "------------"
-  echo "Add a record"
-  echo "------------"
-  read -p "Enter a name: " name
-  read -p "Enter an address: " address
-  read -p "Enter a phone number: " phone
-  read -p "Enter an email: " email
-  echo "$name:$address:$phone:$email" >> database.txt
-}
 
->>>>>>> ff631f0113143b293875e1f8f24e0bf3ae180c94
 
 while [ "$choice" != "e" ]; do
 
@@ -80,21 +73,17 @@ while [ "$choice" != "e" ]; do
 	read -p "> Your selection : " choice
 
 	case $choice in 
-<<<<<<< HEAD
 
 		a)searchRecord;;
 		A)searchRecord;;
 
 		b)addRecord;;
 		B)addRecord;;
-
-=======
 		a) echo "Find a record";;
 		  #echo "-------------"
 		#A) echo "Find a record";;
 		b)addRecord;;
 		B)addRecord;;
->>>>>>> ff631f0113143b293875e1f8f24e0bf3ae180c94
 		c) echo "Update a record";;
 		   #echo "--------------"
 		#C) echo "Update a record";;
@@ -103,9 +92,9 @@ while [ "$choice" != "e" ]; do
 		   	read -p "Enter a name to delete:" name
 			echo
 
-		   	if grep -i $name $DATA
+		   	if grep -i $name $data
 			then
-				grep -i $name $DATA > newData.txt
+				grep -i $name $data > newData.txt
 			        #userdel -r $name
 				echo "$name was removed from the file"
 			else
