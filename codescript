@@ -1,4 +1,5 @@
 #!/bin/bash
+DATA="database.txt"
 DEBUG=false
 if ${DEBUG}; then
 	echo Task I and Task II
@@ -30,6 +31,35 @@ menu="(a) Find a record
 (d) Remove a recod
 (e) Quit"
 
+
+addRecord() {
+	 echo "------------"
+	 echo "Add a record"
+	 echo "------------"
+	 read -p "Enter a name: " name
+	 read -p "Enter an address: " address
+	 read -p "Enter a phone number: " phone
+	 read -p "Enter an email: " email
+	 echo "$name:$address:$phone:$email" >>$DATA
+}
+searchRecord() {
+	echo "-------------"
+	echo "Find a record"
+	echo "-------------"
+	read -p "Enter a name to search: " name
+	echo
+	
+	if grep -i $name $DATA
+	then
+		echo "The contact is found in: " $DATA
+		echo
+	else
+		echo "The contact is not found"
+		echo
+	fi
+
+}
+
 while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
@@ -37,22 +67,30 @@ while [ "$choice" != "e" ]; do
 	read -p "> Your selection : " choice
 
 	case $choice in 
-		a) echo "Find a record";;
-		  #echo "-------------"
-		#A) echo "Find a record";;
-		b) echo "Add a record"
-		   echo "------------"
-			read -p "Enter a name: " name
-			read -p "Enter an address: " address
-			read -p "Enter a Phone number: " phone
-			read -p "Enter an Email: " email
-			echo "$name: $address: $phone: $email" >> database.txt;;
-		#B) echo "Add a record";;
+
+		a)searchRecord;;
+		A)searchRecord;;
+
+		b)addRecord;;
+		B)addRecord;;
+
 		c) echo "Update a record";;
 		   #echo "--------------"
 		#C) echo "Update a record";;
-		d) echo "Remove a record";;
-		   #echo "---------------"
+		d) echo "Remove a record"
+		   echo "---------------"
+		   	read -p "Enter a name to delete:" name
+			echo
+
+		   	if grep -i $name $DATA
+			then
+				grep -i $name $DATA > newData.txt
+			        #userdel -r $name
+				echo "$name was removed from the file"
+			else
+				echo "$name does not exist"
+
+		fi;;
 		#D) echo "Remove a record";;
 		e) echo "The program is terminated..."
 			exit 1;;

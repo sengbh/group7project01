@@ -7,3 +7,4 @@ Jordan Gang:345 not-oncampus:01234567:email@gmail.com
 
 Ben Seng, 123 address, 543 876 9999, some@email.com
 Rod W: 321 address: 546 213 9080: rod@gmail.com
+John Doe: 123 address: 543 678 2341: email@email.com
