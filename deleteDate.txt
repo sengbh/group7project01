@@ -1,0 +1,9 @@
+Name:Address:Phone:Email
+Bunrith Seng:123 downtown:01234567:email@gmail.com
+Brock S:345 not-downtown:01234567:email@gmail.com
+Phil Gucci:345 not-downsquare:01234567:email@gmail.com
+Jordan Gang:345 not-oncampus:01234567:email@gmail.com
+
+Ben Seng, 123 address, 543 876 9999, some@email.com
+Rod W: 321 address: 546 213 9080: rod@gmail.com
+John Doe: 123 address: 543 678 2341: email@email.com

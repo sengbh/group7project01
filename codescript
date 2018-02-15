@@ -34,7 +34,7 @@ menu="(a) Find a record
 (d) Remove a record
 (e) Quit"
 
-#function to add contact a database file
+#function to add contact to a database file
 addRecord() {
 	 echo "------------"
 	 echo "Add a record"
