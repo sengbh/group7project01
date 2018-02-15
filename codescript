@@ -75,7 +75,7 @@ removeRecord() {
 	echo
 	if grep -i $name $data
 	then
-		grep -v $name $data > deleteDate.txt
+		grep -v $name $data > deleteData.txt
 		echo "$name was removed from the file"
 	else
 		echo "$name does not exist."
