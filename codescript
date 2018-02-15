@@ -114,6 +114,22 @@ updateRecord() {
 		echo "The record is not found"
 	fi
 }
+
+deleteRecord () {
+#deletes a record from database.txt
+	echo "remove a record"
+	echo "---------------"
+	read -p "enter a name to delte: " name
+	echo
+
+	if grep -i $name $data
+	then
+		grep -v $name $data > deleteData.txt
+		echo "$name was removed from the file"
+	else
+		echo "$name does not exist"
+	fi
+}
 while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
@@ -128,21 +144,9 @@ while [ "$choice" != "e" ]; do
 		b)addRecord;;
 		B)addRecord;;
 		c) updateRecord;;
-		#C) echo "Update a record";;
-		d) echo "Remove a record"
-		   echo "---------------"
-		   	read -p "Enter a name to delete:" name
-			echo
-
-		   	if grep -i $name $data
-			then
-				grep -v $name $data > deleteData.txt
-				echo "$name was removed from the file"
-			else
-				echo "$name does not exist"
-
-		fi;;
-		#D) echo "Remove a record";;
+		C) updateRecord;;
+		d) deleteRecord;;
+		D) deleteRecord;;
 		e) echo "The program is terminated..."
 			exit 1;;
 		*)
