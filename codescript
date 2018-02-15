@@ -34,15 +34,30 @@ menu="(a) Find a record
 (d) Remove a record
 (e) Quit"
 
-#function to add contact to a database file
+#function to add contact a database file
 addRecord() {
 	 echo "------------"
 	 echo "Add a record"
 	 echo "------------"
-	 read -p "Enter a name: " name
-	 read -p "Enter an address: " address
-	 read -p "Enter a phone number: " phone
-	 read -p "Enter an email: " email
+	 name=""
+	 address=""
+	 phone=""
+	 email=""
+#set up variables to be empty
+#grab info from users
+	 while [ "$name" = "" ]; do
+	 	read -p "Enter a name: " name
+	 done
+	 while [ "$address" = "" ]; do
+	 	read -p "Enter an address: " address
+	 done
+	 while [ "$phone" = "" ]; do
+	 	read -p "Enter a phone number: " phone
+	 done
+	 while [ "$email" = "" ]; do
+	 	read -p "Enter an email: " email
+	 done
+#add all strings together and add it to the record
 	 echo "$name:$address:$phone:$email" >>$data
 }
 
@@ -65,25 +80,40 @@ searchRecord() {
 
 }
 
-#function to remove a contact from a database
-removeRecord() {
+#this function updates the data of a entry
+updateRecord() {
 	echo "---------------"
-	echo "Remove a record"
+	echo "Update a record"
 	echo "---------------"
-
-	read -p "Enter a name to be removed: " name
+	read -p "Enter a name to search: " name
 	echo
+
 	if grep -i $name $data
 	then
-		grep -v $name $data > deleteData.txt
-		echo "$name was removed from the file"
+		name=""
+		address=""
+		phone=""
+		email=""
+#variables made empty to easily check
+#gather info from user
+		echo "Name has been found. Starting update process."
+		while [ "$name" = "" ]; do
+			read -p "Enter a name: " name
+		done
+		while [ "$address" = "" ]; do
+			read -p "Enter an address: " address
+		done
+		while [ "$phone" = "" ]; do
+			read -p "Enter a phone number: " phone
+		done
+		while [ "$email" = "" ]; do
+			read -p "Enter an email: " email
+		done
+		echo "$name:$address:$phone:$email" >> $data
 	else
-		echo "$name does not exist."
-		echo
+		echo "The record is not found"
 	fi
 }
-
-
 while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
@@ -97,13 +127,22 @@ while [ "$choice" != "e" ]; do
 
 		b)addRecord;;
 		B)addRecord;;
+		c) updateRecord;;
+		#C) echo "Update a record";;
+		d) echo "Remove a record"
+		   echo "---------------"
+		   	read -p "Enter a name to delete:" name
+			echo
 
-		c)updateRecord;;
-		C)updateRecord;;
+		   	if grep -i $name $data
+			then
+				grep -v $name $data > deleteData.txt
+				echo "$name was removed from the file"
+			else
+				echo "$name does not exist"
 
-		d)removeRecord;;
-		D)removeRecord;;
-
+		fi;;
+		#D) echo "Remove a record";;
 		e) echo "The program is terminated..."
 			exit 1;;
 		*)
