@@ -124,7 +124,8 @@ deleteRecord () {
 
 	if grep -i $name $data
 	then
-		grep -lr $name $data . | xargs -0 rm -f --
+	
+		grep -v "$name" $data > file.txt | mv file.txt $data
 		echo "$name was removed from the file"
 	else
 		echo "$name does not exist"
@@ -143,10 +144,13 @@ while [ "$choice" != "e" ]; do
 
 		b) addRecord;;
 		B) addRecord;;
+
 		c) updateRecord;;
 		C) updateRecord;;
+
 		d) deleteRecord;;
 		D) deleteRecord;;
+
 		e) echo "The program is terminated..."
 			exit 1;;
 		*)
