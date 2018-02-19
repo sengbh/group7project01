@@ -140,7 +140,7 @@ deleteRecord () {
 	echo
 }
 
-while [ "$choice" != "e" || "E" ]; do
+while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
 	echo
@@ -161,7 +161,8 @@ while [ "$choice" != "e" || "E" ]; do
 		D) deleteRecord;;
 
 		e) echo "The program is terminated...";;
-		E) echo "The Program is terminated...";;
+		E) echo "The Program is terminated..."
+		   choice=e;;
 
 		*)
 		echo "Invalid input, please enter (a-e)... "
