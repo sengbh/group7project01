@@ -123,11 +123,12 @@ updateRecord() {
 
 deleteRecord () {
 #deletes a record from database.txt
-	echo "remove a record"
+	echo "---------------"
+	echo "Remove a record"
 	echo "---------------"
 	delete=""
 	while [ "$delete" = "" ]; do
-		read -p "enter a name to delte: " delete
+		read -p "Enter a name to delete: " delete
 	done
 
 	if grep -i $delete $data
