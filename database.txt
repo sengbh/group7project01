@@ -1,5 +1,6 @@
 Name:Address:Phone:Email
 
-nick koh:321 address:654 322 7896:email@eml.com
 Bunrith Seng:343 bummmer:544 22:email.com
 phil ll:ddddd:43435 6664454:email.comlll
+Nick Koh:321 Address:6543227896:email@eml.com
+Roddie Fredrik:456 Aquarena Springs Dr:5121234567:rf21@txstate.edu
