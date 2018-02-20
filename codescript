@@ -59,6 +59,7 @@ addRecord() {
 	 done
 #add all strings together and add it to the record
 	 echo "$name:$address:$phone:$email" >>$data
+	 echo
 }
 
 #function to search a contact in a database file
@@ -66,30 +67,34 @@ searchRecord() {
 	echo "-------------"
 	echo "Find a record"
 	echo "-------------"
-	read -p "Enter a name to search: " name
-	echo
+	name=""
+	while [ "$name" = "" ]; do
+		read -p "Enter a name to search: " name
+	done
 	
 	if grep -i $name $data
 	then
 		echo "The contact is found in: " $data
-		echo
 	else
 		echo "The contact is not found in: " $data
-		echo
 	fi
-
+	echo
 }
 
-#this function updates the data of a entry
+#this function updates the data of an entry
 updateRecord() {
 	echo "---------------"
 	echo "Update a record"
 	echo "---------------"
-	read -p "Enter a name to search: " name
+	search=""
+	while [ "$search" = "" ]; do
+		read -p "Enter a name to search: " search
+	done
 	echo
 
-	if grep -i $name $data
+	if grep -iw $search $data
 	then
+		grep -v "$search" $data > file.txt | mv file.txt $data
 		name=""
 		address=""
 		phone=""
@@ -113,24 +118,29 @@ updateRecord() {
 	else
 		echo "The record is not found"
 	fi
+	echo
 }
 
 deleteRecord () {
 #deletes a record from database.txt
-	echo "remove a record"
 	echo "---------------"
-	read -p "enter a name to delte: " name
-	echo
+	echo "Remove a record"
+	echo "---------------"
+	delete=""
+	while [ "$delete" = "" ]; do
+		read -p "Enter a name to delete: " delete
+	done
 
-	if grep -i $name $data
+	if grep -iw $delete $data
 	then
-	
-		grep -v "$name" $data > file.txt | mv file.txt $data
+		grep -v "$delete" $data > file.txt | mv file.txt $data
 		echo "$name was removed from the file"
 	else
-		echo "$name does not exist"
+		echo "$delete does not exist"
 	fi
+	echo
 }
+
 while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
@@ -151,8 +161,10 @@ while [ "$choice" != "e" ]; do
 		d) deleteRecord;;
 		D) deleteRecord;;
 
-		e) echo "The program is terminated..."
-			exit 1;;
+		e) echo "The program is terminated...";;
+		E) echo "The Program is terminated..."
+		   choice=e;;
+
 		*)
 		echo "Invalid input, please enter (a-e)... "
 		echo ;;
