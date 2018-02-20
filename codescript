@@ -76,7 +76,7 @@ searchRecord() {
 		read -p "Enter a name to search: " name
 	done
 	
-	if grep -i $name $data
+	if grep -iw $name $data
 	then
 		echo "The contact is found in: " $data
 	else
