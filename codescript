@@ -22,7 +22,9 @@ if ${DEBUG}; then
 	echo Task III: Implementation
 	echo Implement shell scripts to interact with the database management
 fi
-echo 
+echo
+
+#display the menu
 echo "Welcome to my contact database, please select in the following menu:"
 echo "------------------------------------------------------------------"
 
@@ -34,7 +36,7 @@ menu="(a) Find a record
 (d) Remove a record
 (e) Quit"
 
-#function to add contact a database file
+#function to add contact to a database file
 addRecord() {
 	 echo "------------"
 	 echo "Add a record"
@@ -43,8 +45,9 @@ addRecord() {
 	 address=""
 	 phone=""
 	 email=""
-#set up variables to be empty
-#grab info from users
+
+	 #set up variables to be empty
+	 #grab info from users
 	 while [ "$name" = "" ]; do
 	 	read -p "Enter a name: " name
 	 done
@@ -57,7 +60,8 @@ addRecord() {
 	 while [ "$email" = "" ]; do
 	 	read -p "Enter an email: " email
 	 done
-#add all strings together and add it to the record
+
+	 #add all strings together and add it to the record
 	 echo "$name:$address:$phone:$email" >>$data
 	 echo
 }
@@ -99,8 +103,9 @@ updateRecord() {
 		address=""
 		phone=""
 		email=""
-#variables made empty to easily check
-#gather info from user
+
+		#variables made empty to easily check
+		#gather info from user
 		echo "Name has been found. Starting update process."
 		while [ "$name" = "" ]; do
 			read -p "Enter a name: " name
@@ -115,14 +120,15 @@ updateRecord() {
 			read -p "Enter an email: " email
 		done
 		echo "$name:$address:$phone:$email" >> $data
+		echo
 	else
 		echo "The record is not found"
 	fi
 	echo
 }
 
+#a function to delete a record from a database
 deleteRecord () {
-#deletes a record from database.txt
 	echo "---------------"
 	echo "Remove a record"
 	echo "---------------"
@@ -131,16 +137,21 @@ deleteRecord () {
 		read -p "Enter a name to delete: " delete
 	done
 
+	#search a contact in the database
 	if grep -iw $delete $data
-	then
-		grep -v "$delete" $data > file.txt | mv file.txt $data
-		echo "$name was removed from the file"
+	then	
+		#delete a contact if found and move the contact to
+		#a new file and back to the original
+		grep -vEi "$delete" $data > file.txt | mv file.txt $data
+		echo "The contact is found and $delete was removed from the file"
 	else
-		echo "$delete does not exist"
+		echo "$delete does not exist in the file"
 	fi
 	echo
 }
 
+#check to make sure the input is within the asking menu
+#link to each fuction accordingly
 while [ "$choice" != "e" ]; do
 
 	echo -n "$menu"
