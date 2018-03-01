@@ -76,7 +76,7 @@ searchRecord() {
 		read -p "Enter a name to search: " name
 	done
 	
-	if grep -iw $name $data
+	if grep -e -iwX "$name" $data
 	then
 		echo "The contact is found in: " $data
 	else
@@ -96,7 +96,7 @@ updateRecord() {
 	done
 	echo
 
-	if grep -iw $search $data
+	if grep -iw "$search" "$data"
 	then
 		grep -v "$search" $data > file.txt | mv file.txt $data
 		name=""
@@ -138,11 +138,11 @@ deleteRecord () {
 	done
 
 	#search a contact in the database
-	if grep -iw $delete $data
+	if grep -iw "$delete" "$data"
 	then	
 		#delete a contact if found and move the contact to
 		#a new file and back to the original
-		grep -vEi "$delete" $data > file.txt | mv file.txt $data
+		grep -vEi "$delete" "$data" > file.txt | mv file.txt "$data"
 		echo "The contact is found and $delete was removed from the file"
 	else
 		echo "$delete does not exist in the file"
